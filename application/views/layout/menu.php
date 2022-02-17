@@ -1,5 +1,5 @@
 <nav class="navbar fixed-top navbar-expand-xl navbar-dark bg-primary">
-    <a class="navbar-brand" href="<?php echo base_url(); ?>">Hlavní stránka</a>
+    <a class="navbar-brand" href="<?php echo base_url(); ?>"><i class="fa-solid fa-house"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

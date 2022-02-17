@@ -34,11 +34,34 @@ class Auth extends CI_Controller
         }
     }
 
-    function register()
+    function registerPage()
     {
         $data["title"] = "Register";
         $data["main"] = "registerPage";
         $data["message"] = $this->session->message;
         $this->layout->generate($data);
+    }
+
+    function register()
+    {
+        $username = $this->input->post('name');
+        $password = $this->input->post('password');
+        $passwordRepeat = $this->input->post('passwordRepeat');
+
+        if (!($password == $passwordRepeat)) {
+            $this->session->set_flashdata('message', 'Passwords dont match');
+            redirect('Register');
+        }
+
+
+        $return = $this->ion_auth->register($username, $password, '');
+
+        if ($return != null) {
+            redirect('Admin');
+        } else {
+            $this->session->set_flashdata('message', 'Username already taken');
+
+            redirect('Register');
+        }
     }
 }
