@@ -15,4 +15,10 @@ class Admin extends Admin_Controller
         $data["main"] = "adminPage";
         $this->layout->generate($data);
     }
+
+    function logout()
+    {
+        $this->ion_auth->logout();
+        redirect('/');
+    }
 }

@@ -34,9 +34,11 @@ class Auth extends CI_Controller
         }
     }
 
-    function logout()
+    function register()
     {
-        $this->ion_auth->logout();
-        redirect('/');
+        $data["title"] = "Register";
+        $data["main"] = "registerPage";
+        $data["message"] = $this->session->message;
+        $this->layout->generate($data);
     }
 }

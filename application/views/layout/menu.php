@@ -10,7 +10,7 @@
                 <?php echo anchor('Login', '<i class="fas fa-user-plus"></i> Login', ['class' => 'nav-link']) ?>
             </li>
             <li class="nav-item">
-                <?php echo anchor('Registerace', '<i class="fas fa-sign-in-alt"></i> Register', ['class' => 'nav-link']) ?>
+                <?php echo anchor('Register', '<i class="fas fa-sign-in-alt"></i> Register', ['class' => 'nav-link']) ?>
             </li>
         </ul>
 
