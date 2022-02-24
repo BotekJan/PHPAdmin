@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
     <script src="<?php echo base_url('assets/jquery/jquery-3.5.1.min.js'); ?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/1587151216.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>

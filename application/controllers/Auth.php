@@ -53,7 +53,6 @@ class Auth extends CI_Controller
             redirect('Register');
         }
 
-
         $return = $this->ion_auth->register($username, $password, '');
 
         if ($return != null) {
@@ -62,6 +61,27 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', 'Username already taken');
 
             redirect('Register');
+        }
+    }
+
+    function register2()
+    {
+        $tables = $this->config->item('tables', 'ion_auth');
+        $username = $this->input->post('name');
+        $password = $this->input->post('password');
+        $passwordRepeat = $this->input->post('passwordRepeat');
+
+        $this->form_validation->set_rules('name', 'Name', 'required|is_unique[' . $tables['users'] . ', .username]');
+        $this->form_validation->set_rules('password', 'Password', 'required|matches[passwordRepeat]');
+        $this->form_validation->set_rules('passwordRepeat', 'Repeat password', 'required');
+
+        $return = $this->form_validation->run();
+
+        if ($return) {
+            $this->ion_auth->register($username, $password);
+            $this->session->set_flashdata('message', 'Your account has been created, you can now log in.');
+            redirect('Login');
+        } else {
         }
     }
 }
