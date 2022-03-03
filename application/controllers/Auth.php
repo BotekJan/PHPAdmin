@@ -8,6 +8,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->model('');
+        $this->load->library('arraylibrary');
     }
 
     function loginPage()
@@ -71,17 +72,23 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
         $passwordRepeat = $this->input->post('passwordRepeat');
 
-        $this->form_validation->set_rules('name', 'Name', 'required|is_unique[' . $tables['users'] . ', .username]');
+        $this->form_validation->set_rules('name', 'Name', 'required|is_unique[' . $tables['users']  . '.username]');
         $this->form_validation->set_rules('password', 'Password', 'required|matches[passwordRepeat]');
         $this->form_validation->set_rules('passwordRepeat', 'Repeat password', 'required');
 
         $return = $this->form_validation->run();
 
         if ($return) {
-            $this->ion_auth->register($username, $password);
+            $this->ion_auth->register($username, $password, '');
             $this->session->set_flashdata('message', 'Your account has been created, you can now log in.');
+            var_dump($return);
             redirect('Login');
         } else {
+            $inputs = array('username', 'password', 'passwordRepeat');
+            $errors = $this->arraylibrary->inputsArray($this->form_validation->error_array(), $inputs);
+            $this->session->set_flashdata('message', $errors);
+
+            redirect('Register');
         }
     }
 }

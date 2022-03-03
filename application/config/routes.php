@@ -57,7 +57,7 @@ $route['Login'] = 'Auth/loginPage';
 $route['LoginUser'] = 'Auth/login';
 
 $route['Register'] = 'Auth/registerPage';
-$route['RegisterUser'] = 'Auth/register';
+$route['RegisterUser'] = 'Auth/register2';
 
 $route['Logout'] = 'Admin/logout';
 $route['Admin'] = 'Admin';
